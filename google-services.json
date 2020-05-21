@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "88294439713",
+    "firebase_url": "https://sbmastologia-3bc93.firebaseio.com",
+    "project_id": "sbmastologia-3bc93",
+    "storage_bucket": "sbmastologia-3bc93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88294439713:android:1b969df4f19265bd0e1c60",
+        "android_client_info": {
+          "package_name": "com.visana.sbm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88294439713-40h8esoruuksvmvp4v2f1ojuqv8ros78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0UVVSpR6RNEVs6hYcHyVwp5EBn9lUEMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88294439713-40h8esoruuksvmvp4v2f1ojuqv8ros78.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

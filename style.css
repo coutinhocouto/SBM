@@ -104,18 +104,25 @@ footer a {color: #fff;}
 .page textarea {height: 150px; width: 100%; padding: 10px; margin-bottom: 10px;}
 .page button {color: #fff;     background: #0DA9A1;    height: 70px;    width: 70px;    border-radius: 50%;    font-size: 30px;    border: none;    margin: 0 auto;    display: block;}
 
-#list-salas, #ver-list-salas {padding: 0; list-style: none;}
-#list-salas li a, #ver-list-salas div {background: #EBEBEB; color: #333333; display: block; padding: 15px; margin-bottom: 15px;}
-#list-salas li a span, #ver-list-salas span {font-size: 11px;     display: block;    margin-bottom: 5px; color: #0DA9A1}
+#list-salas, .ver-list-salas {padding: 0; list-style: none;}
+#list-salas li a, .ver-list-salas em {background: #EBEBEB; color: #333333; display: block; padding: 15px; margin-bottom: 15px;}
+#list-salas li a span, .ver-list-salas span {font-size: 11px;     display: block;    margin-bottom: 5px; color: #0DA9A1}
 
-#ver-list-salas {padding-bottom: 60px;}
-#ver-list-salas li {margin-bottom: 30px; position: relative;}
-#ver-list-salas li span {position: relative;}
-#ver-list-salas li span::before {content: '';    width: 0;    height: 0;    border-left: 15px solid transparent;    border-right: 15px solid transparent;    border-top: 12px solid #EBEBEB;    clear: both;    display: block;    margin-bottom: 10px;  top: -17px;  left: 20px; position: absolute;}
-#ver-list-salas li:first-child div {color: #0DA9A1; padding: 0; background: none; border-bottom: 1px dashed #0DA9A1;     padding-bottom: 15px;}
-#ver-list-salas li:first-child span {color: #333333;}
-#ver-list-salas li:first-child span::before {display: none;}
+.ver-list-salas li {margin-bottom: 30px; position: relative;}
+.ver-list-salas li span {position: relative;}
+.ver-list-salas li span::before {content: '';    width: 0;    height: 0;    border-left: 15px solid transparent;    border-right: 15px solid transparent;    border-top: 12px solid #EBEBEB;    clear: both;    display: block;    margin-bottom: 10px;  top: -17px;  left: 20px; position: absolute;}
+
+.list2 {padding-bottom: 60px;}
+.list1 li {margin-bottom: 20px;}
+.list1 li em {color: #0DA9A1; padding: 0; background: none; border-bottom: 1px dashed #0DA9A1;     padding-bottom: 15px;}
+.list1 li span {color: #333333;}
+.list1 li span::before {display: none;}
 
 #comentar {padding: 10px 15px;    margin-bottom: 10px;    display: block;    font-weight: 700;    background: #0DA9A1;    color: #fff;    position: fixed;    width: 93%;    bottom: 55px;}
 #comentar i {color: #0DA9A1; background: #F1F2F2; float: right; padding: 6px 7px; border-radius: 50%;}
+
+#events-list {list-style: none;}
+#events-list li {padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid #EBEBEB;}
+#events-list span {font-size: 13px;}
+#events-list h6 {font-size: 17px; font-weight: 700;}
 
