@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}
+body {	line-height: 1.5; font-family: 'Quicksand', sans-serif;}
+ol, ul {}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}
+table {	border-collapse: collapse;	border-spacing: 0;}
+img {max-width: 100%; height: auto;}
+a {text-decoration: none; color: #002D74;}
+a:hover {text-decoration: none !important;}
+strong {font-weight: 700;}
+h3 {font-size: 20px;}
+figure {max-width: 100%;}
+figcaption {background: #eee; text-align: center; padding: 5px;}
+em {font-style: italic;}
+body {min-height: 100vh;}
+
+@media screen and (max-width: 750px) {
+    iframe {
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}
+.alignleft {float: left; margin-right: 20px}
+
+#app {max-width: 1000px; margin: 0 auto;}
+
+.login-page {background: url(img/inicial-bg.jpg); background-position: top center; background-repeat: no-repeat; padding-bottom: 15%;}
+.login {padding: 20px; text-align: center;}
+.login #logo {max-width: 300px; display: block; margin: 15% auto 10%;}
+.login h1, .login a { color: #fff;}
+.login a {display: block; margin-bottom: 0x;}
+.login h1 {font-size: 25px;}
+.login h1::after {height: 3px; width: 100px; background-color: #fff; content: ''; display: block; margin: 10px auto 25px;}
+.login input, .login select {width: 85%; border: 3px solid #71DFE2; background-color: transparent; color: #fff; margin-bottom: 20px; height: 25px; padding: 10px; border-radius: 50px;}
+.login select {width: 93%; height: 50px;}
+.login button {background: #FFC909; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: block; margin: 0 auto; border: none; font-size: 25px; margin-bottom: 30px;}
+.login input[type=submit] {background: #FFC909; color: #fff; font-size: 17px; margin-bottom: 30px; height: 45px; width: 93%;}
+
+#sticky-wrapper {z-index: 9;}
+
+header {background: url(img/header-bg.jpg); background-size:  cover; padding: 20px 10px;}
+header .p1 {width: 60%; display: inline-block; color: #fff; font-size: 14px;}
+header .p1 i {padding: 10px 11px; background: #017f79; border-radius: 50%; margin-right: 10px; font-size: 17px;}
+header .p2 {width: 38%; display: inline-block;}
+header .p2 img {vertical-align: middle;}
+
+.menu-home a {color: #333333; font-weight: 300; font-size: 12px; text-align: center; display: block;}
+.posts-home {padding-bottom: 50px;}
+.posts-home h3 {color: #10C0B3; font-size: 20px;}
+.posts-home p {color: #333333; font-size: 12px; line-height: 1.2;}
+.posts-home hr {background: #4D4D4F; width: 100%; margin-bottom: 30px;}
+.posts-home p {font-size: 15px;}
+
+footer {position: fixed; bottom: 0px; z-index: inherit; background: url(img/header-bg.jpg); background-size: cover; padding: 10px 0; width: 100%; color: #fff; text-align: center; left: 0;}
+footer i {border: 1px solid #fff; padding: 10px 11px; border-radius: 50%;}
+footer a {color: #fff;}
+
+.sidenav {height: 100%;  width: 0; position: fixed; z-index: 1; top: 0; left: 0; background: url(img/inicial-bg.jpg); overflow-x: hidden; padding-top: 60px; transition: 0.5s;}
+.sidenav a { padding: 10px 8px 10px 20px;text-decoration: none;font-size: 15px;color: #fff;display: block;transition: 0.3s;}
+.sidenav a:hover {  color: #f1f1f1;  }  
+.sidenav .closebtn {position: absolute;    top: 0;    right: 25px;    font-size: 36px;    margin-left: 50px;  }
+.sidenav img {max-height: 25px; max-width: 25px; vertical-align: text-bottom;}
+.sidenav span {width: 35px; text-align: center; display: inline-block;}
+#main {transition: margin-left .5s;}
+
+.the-page {padding-bottom: 60px;}
+.the-page input, .the-page select {width: 100%; padding: 10px; border-radius: 20px; margin-bottom: 10px;}
+
+.title-page {color: #10C0B3; text-align: center; display: block; font-size: 20px;}
+.title-page::after {background: #4D4D4F; width: 150px; height: 3px; display: block; content: ''; margin: 15px auto 25px;}
+
+.cabecalho {margin: 20px 0 40px;}
+.cabecalho a {color: #333333; margin-top: 5px; display: block;}
+.cabecalho a i {font-size: 20px; vertical-align: middle;}
+.cabecalho span {display: block; border-bottom: 3px solid #4D4D4F; text-align: center; padding-bottom: 10px; color: #0DA9A1; font-size: 19px; font-weight: 700;}
+
+.basic-list {padding: 15px; background: #EBEBEB; list-style: none;}
+.basic-list li a {padding: 15px; margin-bottom: 10px; color: #333333; background: #fff; display: block; font-weight: 700;}
+.basic-list li.invert a {background: #0DA9A1; color: #fff;}
+.basic-list li:last-child a {margin-bottom: 0px;}
+.basic-list li a i {color: #0DA9A1; background: #F1F2F2; float: right; padding: 6px 7px; border-radius: 50%;}
+.basic-list li a span {width: 85%; display: inline-block;}
+
+.title2 {background: #EBEBEB; color: #0DA9A1; padding: 15px; display: block; text-align: center;}
+.title-video {background: #EBEBEB; color: #700B22; font-weight: 700; display: block; padding: 15px; margin-bottom: 20px;}
+.posts iframe {width: 100% !important; margin-bottom: 40px;}
+
+.btn-primary {background: #01A8A1 !important; border-color: #01A8A1 !important;}
+.destaque-img {margin: 0 auto 30px; display: block;}
+
+#erro-login, #criado-sucesso {padding: 20px; margin: 0 15px 15px; background: red; color: #fff; display: block; font-size: 13px; border-radius: 50px; font-weight: 700;}
+#criado-sucesso {background: green;}
+
+.page input, .page select, .page textarea {border-radius: 0; border: 1px solid #333333;}
+.page textarea {height: 150px; width: 100%; padding: 10px; margin-bottom: 10px;}
+.page button {color: #fff;     background: #0DA9A1;    height: 70px;    width: 70px;    border-radius: 50%;    font-size: 30px;    border: none;    margin: 0 auto;    display: block;}
+
+#list-salas, #ver-list-salas {padding: 0; list-style: none;}
+#list-salas li a, #ver-list-salas div {background: #EBEBEB; color: #333333; display: block; padding: 15px; margin-bottom: 15px;}
+#list-salas li a span, #ver-list-salas span {font-size: 11px;     display: block;    margin-bottom: 5px; color: #0DA9A1}
+
+#ver-list-salas {padding-bottom: 60px;}
+#ver-list-salas li {margin-bottom: 30px; position: relative;}
+#ver-list-salas li span::before {content: '';    width: 0;    height: 0;    border-left: 15px solid transparent;    border-right: 15px solid transparent;    border-top: 12px solid #EBEBEB;    clear: both;    display: block;    margin-bottom: 10px;    margin-top: -15px;    margin-left: 20px;}
+#ver-list-salas li:first-child div {color: #0DA9A1; padding: 0; background: none; border-bottom: 1px dashed #0DA9A1;     padding-bottom: 15px;}
+#ver-list-salas li:first-child span {color: #333333;}
+#ver-list-salas li:first-child span::before {display: none;}
+
+#comentar {padding: 10px 15px;    margin-bottom: 10px;    display: block;    font-weight: 700;    background: #0DA9A1;    color: #fff;    position: fixed;    width: 93%;    bottom: 55px;}
+#comentar i {color: #0DA9A1; background: #F1F2F2; float: right; padding: 6px 7px; border-radius: 50%;}
+
