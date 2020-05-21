@@ -132,8 +132,8 @@
         <allow-intent href="itms-apps:*" />
     </platform>
 
-    <platform name="android">
-        <resource-file src="google-services.json" target="/google-services.json" />
+    <platform name="android"> 
+        <resource-file src="google-services.json" target="/app/google-services.json" /> 
     </platform>
 
     <edit-config target="ITSAppUsesNonExemptEncryption" file="*-Info.plist" mode="merge">
