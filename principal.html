@@ -28,13 +28,28 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>		
 
 		<title>SBM</title>
-	</head>
-	
-	<body class="page">
-		
+
 		<script>
+
+			function init(){
+				document.addEventListener("deviceready", onDeviceReady, false);
+			}
+
+			function onDeviceReady(){
+				window.plugins.OneSignal.getIds(function(ids) {
+					var player = ids.userId;
+					Cookies.set('player', player, { expires: 365 });
+				});
+
+				window.ga.trackView('Screen Title');
+				window.ga.trackEvent('Category', 'Action', 'Label');
+			}
+
 			$(document).ready(function(){
 				"use strict";
+
+				alert('player: ' + player)
+
 				$('.owl-carousel').owlCarousel({
                     loop:true,
                     margin:0,
@@ -83,6 +98,10 @@
 
 		</script>
 
+	</head>
+	
+	<body class="page" onload="onDeviceReady()">
+		
 		<div id="app">
 			
 			<section class="page" id="main">

@@ -98,6 +98,8 @@ document.addEventListener('deviceready', function () {
 
     navigator.vibrate;
 
+    window.ga.startTrackerWithId('UA-167304712-1', 30)
+
 }, false);
 
 
