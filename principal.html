@@ -41,8 +41,9 @@
 					Cookies.set('player', player, { expires: 365 });
 				});
 
-				window.ga.trackView('Screen Title');
-				window.ga.trackEvent('Category', 'Action', 'Label');
+				window.ga.startTrackerWithId('UA-167304712-1', 30)
+				window.ga.trackView('Principal');
+				window.ga.trackEvent('Chegou', 'Funcionou', 'Foi');
 			}
 
 			$(document).ready(function(){
