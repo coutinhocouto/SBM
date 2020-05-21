@@ -37,6 +37,7 @@
 
 				$("#user").val(Cookies.get('cpf'))
 				$("#sala").val(getParameterByName('id'))
+				$('#back').attr('href','ver-sala.html?id=' + getParameterByName('id'));
 
 				var url="https://app.visana.com.br/sbm/ver-sala.php?id=" + getParameterByName('id');
 				console.log(url)
@@ -107,7 +108,7 @@
 					<div class="container">
 						<div class="row cabecalho">
 							<div class="col-3">
-								<a href="javascript:history.back()"><i class="fas fa-chevron-left"></i> Voltar</a>
+								<a href="" id="back"><i class="fas fa-chevron-left"></i> Voltar</a>
 							</div>
 							<div class="col-9">
 								<span id="sala-title">Comentar em - </span>

@@ -19,7 +19,7 @@ figure {max-width: 100%;}
 figcaption {background: #eee; text-align: center; padding: 5px;}
 em {font-style: italic;}
 body {min-height: 100vh;}
-input:focus, textarea:focus, select:focus{   outline: none;}
+input:focus, textarea:focus, select:focus, button:focus {   outline: none;}
 
 @media screen and (max-width: 750px) {
     iframe {
@@ -45,9 +45,9 @@ input:focus, textarea:focus, select:focus{   outline: none;}
 .login button {background: #FFC909; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: block; margin: 0 auto; border: none; font-size: 25px; margin-bottom: 30px;}
 .login input[type=submit] {background: #FFC909; color: #fff; font-size: 17px; margin-bottom: 30px; height: 45px; width: 93%;}
 
-#sticky-wrapper {z-index: 9;}
+#sticky-wrapper {z-index: 998;}
 
-header {background: url(img/header-bg.jpg); background-size:  cover; padding: 20px 10px;}
+header {background: url(img/header-bg.jpg); background-size:  cover; padding: 20px 10px; z-index: 999;}
 header .p1 {width: 60%; display: inline-block; color: #fff; font-size: 14px;}
 header .p1 i {padding: 10px 11px; background: #017f79; border-radius: 50%; margin-right: 10px; font-size: 17px;}
 header .p2 {width: 38%; display: inline-block;}
@@ -79,7 +79,7 @@ footer a {color: #fff;}
 .title-page::after {background: #4D4D4F; width: 150px; height: 3px; display: block; content: ''; margin: 15px auto 25px;}
 
 .cabecalho {margin: 20px 0 40px;}
-.cabecalho a {color: #333333; margin-top: 5px; display: block;}
+.cabecalho a {color: #333333; margin-top: 5px; display: block; font-size: 14px;}
 .cabecalho a i {font-size: 20px; vertical-align: middle;}
 .cabecalho span {display: block; border-bottom: 3px solid #4D4D4F; text-align: center; padding-bottom: 10px; color: #0DA9A1; font-size: 19px; font-weight: 700;}
 
