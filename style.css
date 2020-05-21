@@ -19,6 +19,7 @@ figure {max-width: 100%;}
 figcaption {background: #eee; text-align: center; padding: 5px;}
 em {font-style: italic;}
 body {min-height: 100vh;}
+input:focus, textarea:focus, select:focus{   outline: none;}
 
 @media screen and (max-width: 750px) {
     iframe {
@@ -39,6 +40,7 @@ body {min-height: 100vh;}
 .login h1 {font-size: 25px;}
 .login h1::after {height: 3px; width: 100px; background-color: #fff; content: ''; display: block; margin: 10px auto 25px;}
 .login input, .login select {width: 85%; border: 3px solid #71DFE2; background-color: transparent; color: #fff; margin-bottom: 20px; height: 25px; padding: 10px; border-radius: 50px;}
+.login input::placeholder {color: #d8d8d8}
 .login select {width: 93%; height: 50px;}
 .login button {background: #FFC909; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: block; margin: 0 auto; border: none; font-size: 25px; margin-bottom: 30px;}
 .login input[type=submit] {background: #FFC909; color: #fff; font-size: 17px; margin-bottom: 30px; height: 45px; width: 93%;}
