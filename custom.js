@@ -64,3 +64,16 @@ function cutString(s, n){
     if(cut== -1) return s;
     return s.substring(0, cut)
 }
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(
+window,document,'script','https://www.google-analytics.com/analytics.js','gaU');
+gaU('create','UA-167304712-1',{'storage':'none','clientId':Cookies.get('player')});
+gaU('set','checkProtocolTask',null);
+gaU('set','anonymizeIp',true);
+gaU('set','forceSSL',true);
+
+//gaU('send','event',{'eventCategory':'My_Category','eventAction':'My_Action','eventLabel':'Event_Label','eventValue':11});
+
