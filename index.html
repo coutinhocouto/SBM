@@ -20,73 +20,58 @@
 		<script src="js/owl.carousel.js"></script>
 		
 		<script src="js/jquery-cookie.js"></script>
+
+		<script src="custom.js"></script>
 		
 		<title>SBM</title>
 
 		<script>
-
-			function init(){
-				document.addEventListener("deviceready", onDeviceReady, false);
-			}
-
-			function onDeviceReady(){
-				window.plugins.OneSignal.getIds(function(ids) {
-					var player = ids.userId;
-					Cookies.set('player', player, { expires: 365 });
-					navigator.vibrate(500);
-				});
-			}
-
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(
-				window,document,'script','https://www.google-analytics.com/analytics.js','gaU');
-				gaU('create','UA-167304712-1',{'storage':'none','clientId':Cookies.get('player')});
-				gaU('set','checkProtocolTask',null);
-				gaU('set','anonymizeIp',true);
-				gaU('set','forceSSL',true);
-				gaU('send','pageview',{'title':'Index','page':'/'});
+			gaU('send','pageview',{'title':'Index','page':'/'});
 
 			$(document).ready(function(){
 				"use strict";	
 
-				console.log(Cookies.get('cpf'))
+				$('h1').append(Cookies.get('cpf'))
 				
 				if(typeof Cookies.get('cpf') !== 'undefined' ) {
+
 					$( "#loginform input" ).hide();
 					$( "#loader" ).show();
 					window.location.replace("principal.html");
-				}
-				
-				$('#loginform button').click(function(){
-											
-					var emails = $('#loginform input[type=text]').val();
-					var pwds = $('#loginform input[type=password]').val();
-					
-					var url="https://app.visana.com.br/sbm/login.php?cpf=" + emails + "&senha=" + pwds;
-						
-					$.getJSON(url,function(result){
 
-						$.each(result, function(i, field){
-							if( field.status == 0) {
-								$('.response').html('<span id="erro-login">Os dados informados estão incorretos, tente novamente.<span>');
-								$( "#loginform input" ).show();
-							} else {
-								Cookies.set('nome', field.nome, { expires: 30 });
-								Cookies.set('id', field.id, { expires: 30 });
-								Cookies.set('cpf', field.cpf, { expires: 30 });
-								Cookies.set('email', field.email, { expires: 30 });
-								window.location.replace("inicial.html");
-							};
+				} else {
+				
+				
+					$('#loginform button').click(function(){
+												
+						var emails = $('#loginform input[type=text]').val();
+						var pwds = $('#loginform input[type=password]').val();
+						
+						var url="https://app.visana.com.br/sbm/login.php?cpf=" + emails + "&senha=" + pwds;
+							
+						$.getJSON(url,function(result){
+
+							$.each(result, function(i, field){
+								if( field.status == 0) {
+									$('.response').html('<span id="erro-login">Os dados informados estão incorretos, tente novamente.<span>');
+									$( "#loginform input" ).show();
+								} else {
+									Cookies.set('nome', field.nome, { expires: 30 });
+									Cookies.set('id', field.id, { expires: 30 });
+									Cookies.set('cpf', field.cpf, { expires: 30 });
+									Cookies.set('email', field.email, { expires: 30 });
+									window.location.replace("inicial.html");
+								};
+
+							});
 
 						});
-
+						
+						return false;
+						
 					});
-					
-					return false;
-					
-				});
+
+				}
 				
 			});
 			$( document ).ajaxStart(function() {

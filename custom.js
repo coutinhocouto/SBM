@@ -1,15 +1,17 @@
 // JavaScript Document
 $(document).ready(function(){
 
-    var totalWords = Cookies.get('nome');
-    firstWord = totalWords.replace(/ .*/,'');
+    if( Cookies.get('nome')){
+        var totalWords = Cookies.get('nome');
+        firstWord = totalWords.replace(/ .*/,'');
+    
+        $('#app').prepend('<div id="mySidenav" class="sidenav"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><a href="minha-conta.html"><span><img src="img/icon/user.png" alt="" /></span> Minha conta</a><a href="eventos.html"><span><img src="img/icon/calendar.png" alt="" /></span> Eventos</a><a href="ferramentas.html"><span><img src="img/icon/tool.png" alt="" /></span> Ferramentas</a><a href="videos.html"><span><img src="img/icon/vid.png" alt="" /></span> Vídeos</a><a href="publicacoes.html"><span><img src="img/icon/book.png" alt="" /></span> Publicações</a><a href="forum.html"><span><img src="img/icon/chat.png" alt="" /></span> Fórum</a><a href="mailto:contato@scmastologia.com.br"><span><img src="img/icon/envelope.png" alt="" /></span> Contato</a><a href="canais.html"><span><img src="img/icon/share.png" alt="" /></span> Nossos canais</a><a href="sobre.html"><span><img src="img/icon/light.png" alt="" /></span> Sobre o app</a><a href="mailto:contato@scmastologia.com.br?subject=Sugestões e melhorias para o APP SBM"><span><img src="img/icon/ballon.png" alt="" /></span> Envie sua sugestão</a><a href="#" id="logout"><span><img src="img/icon/logout.png" alt=""></span> Sair</a></div>');
 
-    $('#app').prepend('<div id="mySidenav" class="sidenav"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><a href="minha-conta.html"><span><img src="img/icon/user.png" alt="" /></span> Minha conta</a><a href="eventos.html"><span><img src="img/icon/calendar.png" alt="" /></span> Eventos</a><a href="ferramentas.html"><span><img src="img/icon/tool.png" alt="" /></span> Ferramentas</a><a href="videos.html"><span><img src="img/icon/vid.png" alt="" /></span> Vídeos</a><a href="publicacoes.html"><span><img src="img/icon/book.png" alt="" /></span> Publicações</a><a href="forum.html"><span><img src="img/icon/chat.png" alt="" /></span> Fórum</a><a href="mailto:contato@scmastologia.com.br"><span><img src="img/icon/envelope.png" alt="" /></span> Contato</a><a href="canais.html"><span><img src="img/icon/share.png" alt="" /></span> Nossos canais</a><a href="sobre.html"><span><img src="img/icon/light.png" alt="" /></span> Sobre o app</a><a href="mailto:contato@scmastologia.com.br?subject=Sugestões e melhorias para o APP SBM"><span><img src="img/icon/ballon.png" alt="" /></span> Envie sua sugestão</a><a href="#" id="logout"><span><img src="img/icon/logout.png" alt=""></span> Sair</a></div>');
+        $('#main').prepend('<header><div class="p1"><i class="fas fa-bars" onclick="openNav()"></i>Olá, <strong>' + firstWord + '</strong></div><div class="p2"><img src="img/logo-branca.png" alt="" /></div></header>');
+        $('#main').append('<footer><div class="container"><div class="row"><div class="col-3"></div><div class="col-3"><a href="canais.html"><i class="fas fa-share-alt"></i></a></div><div class="col-3"><a href="mailto:contato@scmastologia.com.br?subject=Nova mensagem de contato - APP SBM"><i class="fas fa-envelope-open"></i></a></div><div class="col-3"></div></div></div></footer>');
 
-    $('#main').prepend('<header><div class="p1"><i class="fas fa-bars" onclick="openNav()"></i>Olá, <strong>' + firstWord + '</strong></div><div class="p2"><img src="img/logo-branca.png" alt="" /></div></header>');
-    $('#main').append('<footer><div class="container"><div class="row"><div class="col-3"></div><div class="col-3"><a href="canais.html"><i class="fas fa-share-alt"></i></a></div><div class="col-3"><a href="mailto:contato@scmastologia.com.br?subject=Nova mensagem de contato - APP SBM"><i class="fas fa-envelope-open"></i></a></div><div class="col-3"></div></div></div></footer>');
-
-    $("header").sticky({topSpacing:0});
+        $("header").sticky({topSpacing:0});
+    }
 
     $('#logout').click(function(){
         Cookies.remove('nome');
@@ -76,4 +78,19 @@ gaU('set','anonymizeIp',true);
 gaU('set','forceSSL',true);
 
 //gaU('send','event',{'eventCategory':'My_Category','eventAction':'My_Action','eventLabel':'Event_Label','eventValue':11});
+
+$(function() {			
+    //Keep track of how many swipes
+    var count=0;
+
+    //Enable swiping...
+    $("#test").swipe( {
+        //Single swipe handler for left swipes
+        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+            $(this).text("You swiped " + direction + " " + ++count + " times " );	
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold:0
+    });
+});
 
