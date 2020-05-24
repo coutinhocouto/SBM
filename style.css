@@ -20,6 +20,7 @@ figcaption {background: #eee; text-align: center; padding: 5px;}
 em {font-style: italic;}
 body {min-height: 100vh;}
 input:focus, textarea:focus, select:focus, button:focus {   outline: none;}
+img {max-width: 100%;}
 
 @media screen and (max-width: 750px) {
     iframe {
