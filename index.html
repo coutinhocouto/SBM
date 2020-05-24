@@ -27,7 +27,6 @@
 		<title>SBM</title>
 
 		<script>
-
 			
 			function init(){
 				document.addEventListener("deviceready", onDeviceReady, false);
@@ -39,8 +38,6 @@
 					Cookies.set('player', player, { expires: 365 });
 				});
 			}
-
-			alert('player: ' + Cookies.get('player'));
 
 			gaU('send','pageview',{'title':'Index','page':'/'});
 
