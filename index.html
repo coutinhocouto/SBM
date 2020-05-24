@@ -18,6 +18,7 @@
 		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/owl.carousel.js"></script>
+		<script src="js/jquery.sticky.js"></script>
 		
 		<script src="js/jquery-cookie.js"></script>
 
@@ -26,12 +27,28 @@
 		<title>SBM</title>
 
 		<script>
+
+			
+			function init(){
+				document.addEventListener("deviceready", onDeviceReady, false);
+				document.getElementById("vibration").addEventListener("click", vibration);
+			}
+
+			function onDeviceReady(){
+				window.plugins.OneSignal.getIds(function(ids) {
+					var player = ids.userId;
+					Cookies.set('player', player, { expires: 365 });
+				});
+			}
+
+			alert('player: ' + Cookies.get('player'));
+
 			gaU('send','pageview',{'title':'Index','page':'/'});
 
 			$(document).ready(function(){
 				"use strict";
 
-				if(typeof Cookies.get('cpf') !== 'undefined' ) {
+				if(typeof Cookies.get('nome') !== 'undefined' ) {
 
 					$( "#loginform input" ).hide();
 					$( "#loader" ).show();
@@ -84,7 +101,7 @@
 
 	</head>
 	
-	<body class="login-page">
+	<body class="login-page" onload="onDeviceReady()">
 		
 		<div id="app">
 			

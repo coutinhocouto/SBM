@@ -31,24 +31,10 @@
 
 		<script>
 			
-			function init(){
-				document.addEventListener("deviceready", onDeviceReady, false);
-				document.getElementById("vibration").addEventListener("click", vibration);
-			}
-
-			function onDeviceReady(){
-				window.plugins.OneSignal.getIds(function(ids) {
-					var player = ids.userId;
-					Cookies.set('player', player, { expires: 365 });
-				});
-			}
-			
 			gaU('send','pageview',{'title':'Principal','page':'/principal'});
 
 			$(document).ready(function(){
 				"use strict";
-
-				alert('player: ' + Cookies.get('player'));
 
 				$('.owl-carousel').owlCarousel({
                     loop:true,
@@ -124,7 +110,7 @@
 
 	</head>
 	
-	<body class="page" onload="onDeviceReady()">
+	<body class="page">
 		
 		<div id="app">
 			
