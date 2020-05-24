@@ -93,6 +93,4 @@ $(function() {
         threshold:50
     });
 });
-
-function vibration() { var time = 1000; navigator.vibrate(time); }
  
