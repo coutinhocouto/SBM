@@ -62,7 +62,7 @@
 
 						var conteudo = field.content.rendered.replace(/(<([^>]+)>)/ig,'');
 
-						$('.posts-home').append('<div class="col-4"><a href="ver-noticia.html?id=' + field.id + '"><img id="img-' + field.id + '" src="" alt="" /></a></div><div class="col-8"><a href="ver-post.html?id=' + field.id + '"><h3>' + field.title.rendered + '</h3><p>' + cutString(conteudo, 220) + '...</p></a></div><div class="col-12"><hr></div>');
+						$('.posts-home').append('<div class="col-4"><a href="ver-noticia.html?id=' + field.id + '"><img id="img-' + field.id + '" src="" alt="" /></a></div><div class="col-8"><a href="ver-noticia.html?id=' + field.id + '"><h3>' + field.title.rendered + '</h3><p>' + cutString(conteudo, 220) + '...</p></a></div><div class="col-12"><hr></div>');
 
 						var url2="https://app.visana.com.br/sbm/fotos.php?id=" + field.featured_media;
 						console.log(url2)
