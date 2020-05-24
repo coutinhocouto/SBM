@@ -65,7 +65,7 @@
 	</plugin> 
 	
 	<icon src="icon.png"/>
-	<splash src="splash.png" />
+	
    
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
