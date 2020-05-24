@@ -12,19 +12,11 @@ $(document).ready(function(){
 
         $("header").sticky({topSpacing:0});
     }
-
-    $('#logout').click(function(){
-        Cookies.remove('nome');
-        Cookies.remove('cpf');
-        Cookies.remove('id');
-        Cookies.remove('email');
-        window.location.replace("index.html");
-    })
-
 });
 
-$( document ).ajaxStart(function() {   "use strict";  $( "#loader" ).show(); $( "#loader" ).css('display', 'block'); $( "#loader" ).css('margin', '0 auto');});
+$(document).on('click tap touchstart', '#logout', function() {"use strict"; Cookies.remove('nome'); Cookies.remove('cpf'); Cookies.remove('email');	Cookies.remove('id');window.location.replace("index.html");});
 
+$( document ).ajaxStart(function() {   "use strict";  $( "#loader" ).show(); $( "#loader" ).css('display', 'block'); $( "#loader" ).css('margin', '0 auto');});
 $( document ).ajaxStop(function() {	"use strict";  $( "#loader" ).hide(); 	
 	
 
