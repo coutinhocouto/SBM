@@ -55,8 +55,8 @@ function openNav() {
 	document.getElementById("main").style.marginLeft = "330px";
   }
   
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-  function closeNav() {
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
 	document.getElementById("main").style.marginLeft = "0";
 } 
@@ -84,14 +84,15 @@ $(function() {
     var count=0;
 
     //Enable swiping...
-    $("body").swipe( {
+    $("#mySidenav").swipe( {
         //Single swipe handler for left swipes
         swipeLeft:function(event, direction, distance, duration, fingerCount) {
             closeNav();
-            alert('swipe');
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
         threshold:50
     });
 });
 
+function vibration() { var time = 1000; navigator.vibrate(time); }
+ 

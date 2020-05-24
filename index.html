@@ -29,9 +29,7 @@
 			gaU('send','pageview',{'title':'Index','page':'/'});
 
 			$(document).ready(function(){
-				"use strict";	
-
-				$('h1').append(Cookies.get('cpf'))
+				"use strict";
 				
 				if(typeof Cookies.get('cpf') !== 'undefined' ) {
 
@@ -86,7 +84,7 @@
 
 	</head>
 	
-	<body class="login-page" onload="onDeviceReady()">
+	<body class="login-page">
 		
 		<div id="app">
 			

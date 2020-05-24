@@ -33,6 +33,7 @@
 			
 			function init(){
 				document.addEventListener("deviceready", onDeviceReady, false);
+				document.getElementById("vibration").addEventListener("click", vibration);
 			}
 
 			function onDeviceReady(){
@@ -41,8 +42,6 @@
 					Cookies.set('player', player, { expires: 365 });
 				});
 			}
-
-
 			
 			gaU('send','pageview',{'title':'Principal','page':'/principal'});
 
@@ -87,12 +86,36 @@
 
 								$('#img-' + field.id).attr("src", field2.media_details.sizes.thumbnail.source_url);
 								
-								
 							});
 						});
 
 					});
 				});
+
+				if(typeof Cookies.get('player') !== 'undefined') {
+				
+					var player = Cookies.get('player');
+					var user = Cookies.get('id');	
+					
+					var dataString = "user="+user+"&player="+player+"&operacao=inclusao&token=Sbdrespapp2019@";
+
+					$.post({								
+						url:"https://app.visana.com.br/sbm/onesignal.php",
+						data: dataString,
+						dataType: 'json',
+						crossDomain: true,
+						cache: false,
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log(XMLHttpRequest);
+							console.log(textStatus);
+							console.log(errorThrown);
+						},
+						success: function() {
+							alert('user id: ' + user + ' player: ' + player)
+						}
+					});
+				
+				}
 
 			});
 
@@ -121,6 +144,8 @@
 
 						<div class="row posts-home">
 							<div class="col-12">
+								<button id = "vibration">VIBRATION</button>
+
 								<strong class="title-page">Últimas da Mastologia</strong>
 								<hr>
 
