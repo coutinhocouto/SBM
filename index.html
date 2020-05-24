@@ -29,7 +29,9 @@
 			gaU('send','pageview',{'title':'Index','page':'/'});
 
 			$(document).ready(function(){
-				"use strict";	
+				"use strict";
+				
+				alert('oi')
 
 				if(typeof Cookies.get('cpf') !== 'undefined' ) {
 
@@ -42,7 +44,30 @@
 				
 					$('#loginform button').click(function(){
 												
-						alert('oi');
+						var emails = $('#loginform input[type=text]').val();
+						var pwds = $('#loginform input[type=password]').val();
+						
+						var url="https://app.visana.com.br/sbm/login.php?cpf=" + emails + "&senha=" + pwds;
+							
+						$.getJSON(url,function(result){
+
+							$.each(result, function(i, field){
+								if( field.status == 0) {
+									$('.response').html('<span id="erro-login">Os dados informados estão incorretos, tente novamente.<span>');
+									$( "#loginform input" ).show();
+								} else {
+									Cookies.set('nome', field.nome, { expires: 30 });
+									Cookies.set('id', field.id, { expires: 30 });
+									Cookies.set('cpf', field.cpf, { expires: 30 });
+									Cookies.set('email', field.email, { expires: 30 });
+									window.location.replace("inicial.html");
+								};
+
+							});
+
+						});
+						
+						return false;
 						
 					});
 
