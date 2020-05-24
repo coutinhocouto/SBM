@@ -12,8 +12,12 @@
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+		
 		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
 		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.js"></script>
 		
 		<script src="js/jquery-cookie.js"></script>
 
@@ -24,18 +28,17 @@
 		<script>
 			gaU('send','pageview',{'title':'Index','page':'/'});
 
-			alert('oi')
-
 			$(document).ready(function(){
-				"use strict";
-				
+				"use strict";	
+
 				if(typeof Cookies.get('cpf') !== 'undefined' ) {
 
 					$( "#loginform input" ).hide();
 					$( "#loader" ).show();
 					window.location.replace("principal.html");
 
-				} 
+				} else {
+				
 				
 					$('#loginform button').click(function(){
 												
@@ -66,7 +69,7 @@
 						
 					});
 
-				
+				}
 				
 			});
 			$( document ).ajaxStart(function() {
@@ -81,7 +84,7 @@
 
 	</head>
 	
-	<body class="login-page">
+	<body class="login-page" onload="onDeviceReady()">
 		
 		<div id="app">
 			
