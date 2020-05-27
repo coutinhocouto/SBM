@@ -34,9 +34,9 @@
 		
 		<script>
 
-			$( document ).ready(function() {
+			gaU('send','pageview',{'title':'Comentar','page':'/comentar?id=' + getParameterByName('id')});
 
-				gaU('send','pageview',{'title':'Comentar','page':'/comentar?id=' + getParameterByName('id')});
+			$( document ).ready(function() {
 
 				$("#user").val(Cookies.get('cpf'))
 				$("#sala").val(getParameterByName('id'))

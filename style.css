@@ -126,4 +126,11 @@ footer a {color: #fff;}
 #events-list li {padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid #EBEBEB;}
 #events-list span {font-size: 13px;}
 #events-list h6 {font-size: 17px; font-weight: 700;}
+#events-list a {color: #333333;}
+#events-list img {border: 1px solid #e7e7e7; margin-bottom: 10px;}
 
+.aligncenter {margin: 0 auto 20px; display: block;}
+.event-content {display: none;}
+.event-content img {margin-bottom: 20px; }
+.event-sub-title {background: #e7e7e7;     padding: 20px 0;  text-align: center;  font-size: 18px;  margin-bottom: 30px;  color: #0DA9A1; font-weight: 700;}
+.pg-evento .basic-list li a {display: none;}

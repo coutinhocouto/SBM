@@ -36,6 +36,7 @@
 			$( document ).ready(function() {
 				
 				$('#cpf').mask("00000000000", {reverse: true})
+				$('#player').html(Cookies.get('player'))
 				
 				 $('#cpf').focusout(function(){
 				
@@ -223,6 +224,7 @@
 				<input id="confirmar" placeholder="Confirmar Senha" type="password"><br>
 
 				<input id="acao" value="criar" type="hidden">
+				<input id="player" value="" type="hidden">
 				<input id="token" value="Sbdrespapp2019@" type="hidden">
 				
 				<input value="CRIAR CONTA" id="insert" type="submit">

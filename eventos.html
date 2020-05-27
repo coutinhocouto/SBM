@@ -36,6 +36,17 @@
 		<script>
 			gaU('send','pageview',{'title':'Eventos','page':'/eventos'});
 			$(document).ready(function(){
+
+				var url="https://app.visana.com.br/sbm/eventos.php?acao=eventos";
+				console.log(url)
+
+				$.getJSON(url,function(result){
+					$.each(result, function(i, field){
+
+						$('#events-list').append('<li><a href="ver-evento.html?id=' + field.id + '"><img src="' + field.logo + '" alt="" /><span>' + field.data_inicio + ' a ' + field.data_fim + ' - ' + field.local + '</span><h6>' + field.nome + '</h6></a></li>');
+
+					});
+				});
 				
 			});
 		</script>
@@ -57,21 +68,9 @@
 
 						<div class="row">
 							<div class="col-12">
+								<img src="img/loader.gif" id="loader" alt="" style="display: none;">
 								<ul id="events-list">
-									<li>
-										<a href="evento.html?id=">
-											<img src="img/event.jpg" alt="" />
-											<span>11/03/2020  - São Paulo - SP</span>
-											<h6>TOR - Treinamento em Oncoplástica e Reconstrução</h6>
-										</a>
-									</li>
-									<li>
-										<a href="evento.html?id=">
-											<img src="img/event.jpg" alt="" />
-											<span>11/03/2020  - São Paulo - SP</span>
-											<h6>TOR - Treinamento em Oncoplástica e Reconstrução</h6>
-										</a>
-									</li>
+									
 								</ul>
 							</div>
 						</div>
