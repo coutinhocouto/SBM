@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+		
+		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/jquery.sticky.js"></script>
+		<script src="js/jquery-cookie.js"></script>
+		<script src="js/analytics.js"></script>
+		<script src="custom.js"></script>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>		
+
+		<title>SBM</title>
+
+		<script>
+			
+			gaU('send','pageview',{'title':'Principal','page':'/principal'});
+
+			$(document).ready(function(){
+				"use strict";
+
+				$('.owl-carousel').owlCarousel({
+                    loop:true,
+                    margin:0,
+                    nav:false,
+                    dots: false,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:1
+                        },
+                        1000:{
+                            items:1
+                        }
+                    }
+                })
+
+				var url="https://app.visana.com.br/sbm/posts-home.php";
+				console.log(url)
+
+				$.getJSON(url,function(result){
+					$.each(result, function(i, field){
+
+						var conteudo = field.content.rendered.replace(/(<([^>]+)>)/ig,'');
+
+						$('.posts-home').append('<div class="col-4"><a href="ver-noticia.html?id=' + field.id + '"><img id="img-' + field.id + '" src="" alt="" /></a></div><div class="col-8"><a href="ver-noticia.html?id=' + field.id + '"><h3>' + field.title.rendered + '</h3><p>' + cutString(conteudo, 220) + '...</p></a></div><div class="col-12"><hr></div>');
+
+						var url2="https://app.visana.com.br/sbm/fotos.php?id=" + field.featured_media;
+						console.log(url2)
+
+						$.getJSON(url2,function(result2){
+							$.each(result2, function(i, field2){
+
+								$('#img-' + field.id).attr("src", field2.media_details.sizes.thumbnail.source_url);
+								
+							});
+						});
+
+					});
+				});
+
+				if(typeof Cookies.get('player') !== 'undefined') {
+				
+					var player = Cookies.get('player');
+					var user = Cookies.get('cpf');	
+					
+					var dataString = "user="+user+"&player="+player+"&operacao=inclusao&token=Sbdrespapp2019@";
+
+					$.post({								
+						url:"https://app.visana.com.br/sbm/onesignal.php",
+						data: dataString,
+						dataType: 'json',
+						crossDomain: true,
+						cache: false,
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log(XMLHttpRequest);
+							console.log(textStatus);
+							console.log(errorThrown);
+						},
+						success: function() {
+							//alert('user id: ' + user + ' player: ' + player)
+						}
+					});
+				
+				}
+
+			});
+
+
+		</script>
+
+	</head>
+	
+	<body class="page">
+		
+		<div id="app">
+			
+			<section class="page" id="main">
+				
+				<section class="the-page">
+					<div class="owl-carousel owl-theme">
+						<div class="item"><a href="#"><img src="img/dsk-home.jpg" alt=""></a></div>
+					</div>
+					<div class="container">
+						<div class="row menu-home" style="margin: 20px 0;">
+							<div class="col-3"><a href="eventos.html"><img src="img/eventos.jpg" alt="" /> Eventos</a></div>
+							<div class="col-3"><a href="ferramentas.html"><img src="img/ferramentas.jpg" alt="" /> Ferramentas</a></div>
+							<div class="col-3"><a href="videos.html"><img src="img/videos.jpg" alt="" /> Vídeos</a></div>
+							<div class="col-3"><a href="publicacoes.html"><img src="img/publicacoes.jpg" alt="" /> Publicações</a></div>
+						</div>
+
+						<div class="row posts-home">
+							<div class="col-12">
+								<hr>
+
+								<img src="img/loader.gif" id="loader" alt="" style="display: none;">
+
+							</div>
+						</div>
+					</div>
+				</section>
+				
+			</section>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+	</body>
+
+</html>
