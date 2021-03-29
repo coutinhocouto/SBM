@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+		
+		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/jquery.sticky.js"></script>
+		<script src="js/jquery-cookie.js"></script>
+
+		<script src="custom.js"></script>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>		
+
+		<title>SBM</title>
+	</head>
+	
+	<body class="page">
+		
+		<script>
+
+			gaU('send','pageview',{'title':'Comentar','page':'/comentar?id=' + getParameterByName('id')});
+
+			$( document ).ready(function() {
+
+				$("#user").val(Cookies.get('cpf'))
+				$("#sala").val(getParameterByName('id'))
+				$('#back').attr('href','ver-sala.html?id=' + getParameterByName('id'));
+
+				var url="https://app.visana.com.br/sbm/ver-sala.php?id=" + getParameterByName('id');
+				console.log(url)
+
+				$.getJSON(url,function(result){
+					$.each(result, function(i, field){
+
+						var dat = field.data_criacao;
+						var y = dat.substring(0,4);
+						var m = dat.substring(5,7);
+						var d = dat.substring(8,10);
+						$('#sala-title').append(field.titulo);
+						$('.ver-list-salas').append('<li><span>' + d + '/' + m + '/' + y + ' - ' + field.nome + '</span><em>' + field.descricao + '</em></li>');
+						$('#comentar').attr('href', 'comentar.html?id=' + field.id);
+					});
+				});
+
+				$("#insert").click(function(){
+					
+					var resposta = $("#resposta").val();
+					var user = $("#user").val();
+					var sala = $("#sala").val();
+					var acao = $("#acao").val();
+					var token = $("#token").val();
+					
+					$(".response").html('');
+					
+					if($("#resposta").val() == ''){
+						$(".response").append('<span id="erro-login">É necessário escrever seu comentário.<span>');
+					}
+					
+					
+					if($.trim(resposta).length>0 )	{
+						
+						var dataString="resposta="+resposta+"&acao="+acao+"&user="+user+"&sala="+sala+"&token="+token;
+					
+						console.log(dataString);
+					
+						$.post({								
+							url:"https://app.visana.com.br/sbm/comentar.php",
+							data: dataString,
+							crossDomain: true,
+							cache: false,
+							beforeSend: function(){ $("#insert").html('Criando...');},
+							error: function(){
+								$("#insert").html('<i class="fas fa-arrow-right"></i>');
+								$(".response").html('<span id="erro-login">Houve um erro ao criar sua sala, por favor cheque sua internet e tente novamente.<span>');
+							},
+							success: function() {
+								$("#insert").html('<i class="fas fa-arrow-right"></i>');
+								$(".response").html('<span href="index.html" id="criado-sucesso">Sua sala foi criada com sucesso.</span>');
+								$("#resposta").val('');
+							}
+						});
+					}
+					
+					return false;
+					
+				});					
+			});
+		</script>
+
+		<div id="app">
+			
+			<section class="page" id="main">
+				
+				<section class="the-page">
+					<div class="container">
+						<div class="row cabecalho">
+							<div class="col-3">
+								<a href="" id="back"><i class="fas fa-chevron-left"></i> Voltar</a>
+							</div>
+							<div class="col-9">
+								<span id="sala-title">Comentar em - </span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<ul class="ver-list-salas list1">
+
+									
+								</ul>
+								<form action="#" method="post" id="loginform">
+									<div class="response"></div>
+
+									<img src="img/loader.gif" id="loader" alt="" style="display: none; background: #fff;">
+					
+									<textarea id="resposta" placeholder="Digite aqui seu comentário."></textarea>
+					
+									<input id="user" value="" type="hidden">
+									<input id="sala" value="" type="hidden">
+									<input id="acao" value="criar" type="hidden">
+									<input id="token" value="Sbdrespapp2019@" type="hidden">
+									
+									<button type="submit" id="insert"><i class="fas fa-arrow-right"></i></button>
+								</form>
+							</div>
+						</div>
+						
+					</div>
+				</section>
+				
+			</section>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+	</body>
+
+</html>

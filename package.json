@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "cordova-android": "^9.0.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "2.0.2",
@@ -16,7 +17,8 @@
       "cordova-plugin-splashscreen": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
