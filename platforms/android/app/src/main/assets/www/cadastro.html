@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+		
+		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/jquery.mask.js"></script>
+		
+		<script src="js/jquery-cookie.js"></script>
+
+		<script src="custom.js"></script>
+		
+		<title>SBM</title>
+	</head>
+	
+	<body class="login-page">
+		
+		<script>
+
+			gaU('send','pageview',{'title':'Cadastro','page':'/cadastro'});
+
+			$( document ).ready(function() {
+				
+				$('#cpf').mask("00000000000", {reverse: true})
+				$('#player').html(Cookies.get('player'))
+				
+				 $('#cpf').focusout(function(){
+				
+					var cpf = $(this).val();
+					
+					var url="https://app.visana.com.br/sbm/existe.php?id=" + cpf;
+					$.getJSON(url,function(result){
+						 $.each(result, function(i, field){
+							
+							if(field.contador == 1){
+								$(".response").html('');
+								$(".response").append('<span id="erro-login">Este CPF já está cadastrado.<span>');
+								$("#insert").prop('disabled', true);
+							} else {
+								$(".response").html('');
+								$("#insert").prop('disabled', false);
+								
+								/*$.ajax({
+								  type: "GET",
+								  url: "https://www.sbdassociados.org.br/interface/SocioQuiteIsento.asmx/ExibeSocioQuiteIsento?Seg=DYNUX&EmpresaSeq=39&CPF=" + cpf,
+								  dataType: "xml",
+								  crossDomain: true,
+								  success: function(xml){
+									  $(xml).each(function(){
+										if($(this).find('string').text() === "N"){                            
+											$.ajax({
+											  type: "GET",
+											  url: "https://www.sbdassociados.org.br/interface/Residente.asmx/ExibeResidente?Seg=E4WO0&EmpresaSeq=41&CPF=" + cpf,
+											  dataType: "xml",
+											  crossDomain: true,
+											  success: function(xml){
+												  $(xml).each(function(){
+													if($(this).find('string').text() === "N"){
+														$(".response").html('<span id="erro-login">Somente associados e residentes da SBD podem se cadastrar!</span>');
+														$("#insert").prop('disabled', true);
+													} else {
+														$(".response").html('');
+														$("#insert").prop('disabled', false);
+													}
+												  });
+											  },
+											  error: function() {
+												  alert("An error occurred while processing XML file.");
+											  }
+											});
+
+										} else {
+
+											$(".response").html('');
+											$("#insert").prop('disabled', false);
+										}
+									  });
+								  },
+								  error: function() {
+									  alert("An error occurred while processing XML file.");
+								  }
+								});*/
+							}
+							
+						 });
+					 });
+					
+				  });
+				
+				$("#insert").click(function(){
+					
+					var nome = $("#nome").val();
+					var email = $("#email").val();
+					var regional = $("#regional").val();
+					var cpf = $("#cpf").val();
+					var acao = $("#acao").val();
+					var senha = $("#senha").val();
+					var token = $("#token").val();
+					
+					$(".response").html('');
+					
+					if($("#nome").val() == ''){
+						$(".response").append('<span id="erro-login">É necessário infomar seu nome.<span>');
+					}
+					if($("#email").val() == ''){
+						$(".response").append('<span id="erro-login">É necessário infomar seu email.<span>');
+					}
+					if($("#cpf").val() == ''){
+						$(".response").append('<span id="erro-login">É necessário infomar seu CPF.<span>');
+					}
+					if($("#senha").val() == ''){
+						$(".response").append('<span id="erro-login">É necessário infomar sua senha.<span>');
+					}
+					
+					if($("#senha").val() != $("#confirmar").val()){
+						$(".response").append('<span id="erro-login">As senhas não conferem.<span>');
+					}
+					
+					
+					if($.trim(nome).length>0 & $.trim(email).length>0  & $.trim(regional).length>0  & $.trim(cpf).length>0  & $.trim(senha).length>0  & $.trim(confirmar).length>0 )	{
+						
+						var dataString="nome="+nome+"&regional="+regional+"&email="+email+"&acao="+acao+"&senha="+senha+"&cpf="+cpf+"&token="+token;
+					
+						console.log(dataString);
+					
+						
+						$.post({								
+							url:"https://app.visana.com.br/sbm/criar-conta.php",
+							data: dataString,
+							crossDomain: true,
+							cache: false,
+							beforeSend: function(){ $("#insert").html('Criando...');},
+							error: function(){
+								$("#insert").html('CRIAR CONTA');
+								$(".response").html('<span id="erro-login">Houve um erro ao criar sua conta, por favor cheque sua internet e tente novamente.<span>');
+							},
+							success: function() {
+								$("#insert").html('CRIAR CONTA');
+								$(".response").html('<a href="index.html" id="criado-sucesso">Seu cadastro foi criado com sucesso. Clique aqui para entrar</a>');
+								$("#nome").val('');
+								$("#email").val('');
+								$("#senha").val('');
+								$("#cpf").val('');
+							}
+						});
+					}
+					
+					return false;
+					
+				});					
+			});
+			$( document ).ajaxStart(function() {
+			  $( "#loader" ).show();
+				$( "#loginform input" ).hide();
+				$( "#loginform select" ).hide();
+			});
+			$( document ).ajaxStop(function() {
+			  $( "#loader" ).hide();
+				$( "#loginform input" ).show();
+				$( "#loginform select" ).show();
+			});
+		</script>
+
+		<div id="app">
+			
+			<section class="login">	
+
+				<img src="img/logo-branca.png" id="logo" alt="" />
+				
+				<h1 style="text-align: center;">CRIE SEU <strong>CADASTRO</strong></h1>
+				<div class="response"></div>
+
+			<form action="#" method="post" id="loginform">
+				<img src="img/loader.gif" id="loader" alt="" style="display: none;">
+
+				<input id="nome" placeholder="Nome Completo" type="text"><br>
+				<input id="cpf" placeholder="CPF (somente números)" type="text"><br>
+				<input id="email" placeholder="E-mail" type="email"><br>			
+				<select id="regional">
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP" selected>São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+					<option value="EX">Estrangeiro</option>
+				</select>
+				<input id="senha" placeholder="Senha" type="password"><br>
+				<input id="confirmar" placeholder="Confirmar Senha" type="password"><br>
+
+				<input id="acao" value="criar" type="hidden">
+				<input id="player" value="" type="hidden">
+				<input id="token" value="Sbdrespapp2019@" type="hidden">
+				
+				<input value="CRIAR CONTA" id="insert" type="submit">
+			</form>
+
+				<a href="index.html">Entrar</a><br>
+				<a href="perdeu.html">Esqueceu sua senha?</a><br>
+				<a href="https://www.sbmastologia.com.br/medicos/venha-para-sbm/" target="_blank">Não é um associado da SBM?</a>
+				
+			</section>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />-->
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="css/owl.theme.default.min.css">
+		
+		<script src="https://kit.fontawesome.com/4e6edfd8f5.js" crossorigin="anonymous"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/jquery.sticky.js"></script>
+		<script src="js/jquery-cookie.js"></script>
+		<script src="custom.js"></script>
+		
+		
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>		
+
+		<title>SBM</title>
+	</head>
+	
+	<body class="page">
+		
+		<script>
+			gaU('send','pageview',{'title':'Ver Cartilha','page':'/ver-cartilha?id=' + getParameterByName('id')});
+			$(document).ready(function(){
+				
+				$('#ver-list-salas').html();
+
+				var url="https://app.visana.com.br/sbm/ver-sala.php?id=" + getParameterByName('id');
+				console.log(url)
+
+				$.getJSON(url,function(result){
+					$.each(result, function(i, field){
+
+						var dat = field.data_criacao;
+						var y = dat.substring(0,4);
+						var m = dat.substring(5,7);
+						var d = dat.substring(8,10);
+						$('#sala-title').html(field.titulo);
+						$('.list1').append('<li><span>' + d + '/' + m + '/' + y + ' - ' + field.nome + '</span><em>' + field.descricao + '</em></li>');
+						$('#comentar').attr('href', 'comentar.html?id=' + field.id);
+
+					});
+				});
+
+				var url2="https://app.visana.com.br/sbm/comentarios.php?id=" + getParameterByName('id');
+				console.log(url2)
+
+				$.getJSON(url2,function(result2){
+					$.each(result2, function(i, field2){
+
+						var dat = field2.data_criacao;
+						y = dat.substring(0,4);
+						m = dat.substring(5,7);
+						d = dat.substring(8,10);
+						datao = d + '/' + m + '/' + y;
+						resposta = field2.resposta.replace(/\n/g, "<br />")
+						
+						$('.list2').append('<li><em>' + field2.resposta + '</em><span class="' + field2.id + '">' + datao + ' - ' + field2.nome + '</span></li>');
+					});
+				});
+
+			});
+		</script>
+
+		<div id="app">
+			
+			<section class="page" id="main">
+				
+				<section class="the-page">
+					<div class="container">
+						<div class="row cabecalho">
+							<div class="col-3">
+								<a href="salas.html"><i class="fas fa-chevron-left"></i> Voltar</a>
+							</div>
+							<div class="col-9">
+								<span id="sala-title"></span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<img src="img/loader.gif" id="loader" alt="" style="display: none; background: #fff;">
+								<ul class="list1 ver-list-salas"></ul>
+								<ul class="list2 ver-list-salas"></ul>
+								<a id="comentar">Comentar <i class="fas fa-arrow-right"></i></a>
+							</div>
+						</div>
+						
+					</div>
+				</section>
+				
+			</section>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+	</body>
+
+</html>
