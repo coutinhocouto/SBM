@@ -1,4 +1,4 @@
-<widget id="com.visana.sbm" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.visana.sbm" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 <!-- <widget id="com.visana<strong></strong>.sbcd" version="1.1.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">-->
     <name>SBM</name>
     <description>
@@ -38,10 +38,10 @@
 	
     <plugin name="cordova-plugin-device" source="npm" spec="2.0.3" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="2.0.2" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" spec="5.0.0" />
     <!--
         <plugin name="cordova-plugin-geolocation" source="npm" spec="4.0.2" />
     <plugin name="cordova-plugin-globalization" source="npm" spec="1.11.0" />
-    <plugin name="cordova-plugin-inappbrowser" source="npm" spec="5.0.0" />
     <plugin name="cordova-plugin-network-information" source="npm" spec="2.0.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="3.1.1" />
     -->
