@@ -2,7 +2,7 @@
 
 platform :ios, '11.0'
 
-target 'C:\git\sbm\platforms\ios\SBM' do
-	project 'C:\git\sbm\platforms\ios\SBM.xcodeproj'
+target 'SBM' do
+	project 'SBM.xcodeproj'
 
 end
