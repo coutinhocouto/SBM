@@ -36,23 +36,20 @@
 			$(document).ready(function(){
 				"use strict";
 
-				$('.owl-carousel').owlCarousel({
-                    loop:true,
-                    margin:0,
-                    nav:false,
-                    dots: false,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:1
-                        },
-                        1000:{
-                            items:1
-                        }
-                    }
-                })
+				var url2="http://app.visana.com.br/sbm/destaques.php";
+				console.log(url2)
+
+				$.getJSON(url2,function(result2){
+					$.each(result2, function(i, field2){
+
+						if(field2.link == ""){
+							$('.owl-carousel').append('<div class="item"><img src="' + field2.imagem + '" alt=""></div>');
+						} else {
+							$('.owl-carousel').append('<div class="item"><a href="' + field2.link + '" target="' + field2.target + '"><img src="' + field2.imagem + '" alt=""></a></div>');
+						}
+
+					});
+				});
 
 				var url="https://app.visana.com.br/sbm/posts-home.php";
 				console.log(url)
@@ -105,6 +102,29 @@
 
 			});
 
+			$( document ).ajaxStop(function() {	"use strict";  
+
+				$('.owl-carousel').owlCarousel({
+                    loop:true,
+                    margin:0,
+                    nav:false,
+                    dots: false,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:1
+                        },
+                        1000:{
+                            items:1
+                        }
+                    }
+                });
+				
+
+			});
+
 
 		</script>
 
@@ -118,13 +138,13 @@
 				
 				<section class="the-page">
 					<div class="owl-carousel owl-theme">
-						<div class="item"><a href="#"><img src="img/dsk-home.jpg" alt=""></a></div>
+						
 					</div>
 					<div class="container">
 						<div class="row menu-home" style="margin: 20px 0;">
 							<div class="col-3"><a href="eventos.html"><img src="img/eventos.jpg" alt="" /> Eventos</a></div>
 							<div class="col-3"><a href="ferramentas.html"><img src="img/ferramentas.jpg" alt="" /> Ferramentas</a></div>
-							<div class="col-3"><a href="https://www.sbmastologia.online/" onclick="window.open('https://www.sbmastologia.online/', '_system'); return false;"><img src="img/videos.jpg" alt="" /> Vídeos</a></div>
+							<div class="col-3"><a href="#" onclick="cordova.InAppBrowser.open('https://www.sbmastologia.online/', '_system', 'location=yes');"><img src="img/videos.jpg" alt="" /> Vídeos</a></div>
 							<div class="col-3"><a href="publicacoes.html"><img src="img/publicacoes.jpg" alt="" /> Publicações</a></div>
 						</div>
 

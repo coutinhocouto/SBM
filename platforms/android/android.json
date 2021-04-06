@@ -45,6 +45,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -66,6 +70,9 @@
       "PACKAGE_NAME": "com.visana.sbm"
     },
     "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.visana.sbm"
+    },
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.visana.sbm"
     },
     "cordova-plugin-splashscreen": {
@@ -105,6 +112,14 @@
       ]
     },
     {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open"
+      ]
+    },
+    {
       "id": "cordova-plugin-splashscreen.SplashScreen",
       "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
       "pluginId": "cordova-plugin-splashscreen",
@@ -124,6 +139,7 @@
   "plugin_metadata": {
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-dialogs": "2.0.2",
+    "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-whitelist": "1.3.4"
